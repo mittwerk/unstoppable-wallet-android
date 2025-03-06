@@ -1,6 +1,5 @@
 package io.horizontalsystems.bankwallet.modules.main
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.BackHandler
@@ -33,7 +32,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
@@ -59,7 +57,6 @@ import io.horizontalsystems.bankwallet.modules.rooteddevice.RootedDeviceScreen
 import io.horizontalsystems.bankwallet.modules.rooteddevice.RootedDeviceViewModel
 import io.horizontalsystems.bankwallet.modules.settings.main.SettingsScreen
 import io.horizontalsystems.bankwallet.modules.tor.TorStatusView
-import io.horizontalsystems.bankwallet.modules.transactions.TransactionsModule
 import io.horizontalsystems.bankwallet.modules.transactions.TransactionsScreen
 import io.horizontalsystems.bankwallet.modules.transactions.TransactionsViewModel
 import io.horizontalsystems.bankwallet.modules.walletconnect.WCAccountTypeNotSupportedDialog
@@ -77,21 +74,23 @@ class MainFragment : BaseComposeFragment() {
 
     @Composable
     override fun GetContent(navController: NavController) {
-        val backStackEntry = navController.safeGetBackStackEntry(R.id.mainFragment)
+        Xxx()
 
-        backStackEntry?.let {
-            val viewModel = ViewModelProvider(backStackEntry.viewModelStore,  TransactionsModule.Factory())
-                .get(TransactionsViewModel::class.java)
-            MainScreenWithRootedDeviceCheck(
-                transactionsViewModel = viewModel,
-                navController = navController,
-                mainActivityViewModel = mainActivityViewModel
-            )
-        } ?: run {
-            // Back stack entry doesn't exist, restart activity
-            val intent = Intent(context, MainActivity::class.java)
-            requireActivity().startActivity(intent)
-        }
+//        val backStackEntry = navController.safeGetBackStackEntry(R.id.mainFragment)
+//
+//        backStackEntry?.let {
+//            val viewModel = ViewModelProvider(backStackEntry.viewModelStore,  TransactionsModule.Factory())
+//                .get(TransactionsViewModel::class.java)
+//            MainScreenWithRootedDeviceCheck(
+//                transactionsViewModel = viewModel,
+//                navController = navController,
+//                mainActivityViewModel = mainActivityViewModel
+//            )
+//        } ?: run {
+//            // Back stack entry doesn't exist, restart activity
+//            val intent = Intent(context, MainActivity::class.java)
+//            requireActivity().startActivity(intent)
+//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
